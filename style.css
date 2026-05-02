@@ -824,10 +824,10 @@ button:active,
 .premium-exercise-main .exercise-tags {
   grid-column: 1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: max-content max-content;
   align-items: center;
   justify-content: start;
-  gap: 7px;
+  gap: 7px 8px;
 }
 
 .premium-exercise-row h3,

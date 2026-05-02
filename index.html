@@ -49,46 +49,51 @@
               <span>Aloita treeni</span>
             </button>
 
-            <section class="active-card hidden" id="active-workout-card">
-              <div class="active-card-head">
-                <div>
-                  <p class="section-kicker">Keskeneräinen treeni</p>
-                  <div class="active-meta">
-                    <span class="progress-ring" aria-hidden="true"></span>
-                    <div>
-                      <h3 id="active-workout-title">Yläkroppa</h3>
-                      <p id="active-workout-started">Aloitettu 18:32</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="head-actions">
-                  <button class="icon-button action-icon danger-action" id="discard-workout-button" type="button" aria-label="Tyhjennä treeni">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7l1-3h4l1 3"></path></svg>
-                  </button>
-                  <button class="icon-button action-icon" id="add-workout-exercise-button" type="button" aria-label="Lisää liike">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
-                  </button>
-                </div>
-              </div>
-
-              <div id="active-workout-exercises" class="exercise-list"></div>
-
-              <label class="field note-field">
-                <span>Treenin kommentti</span>
-                <textarea id="workout-note" rows="2" placeholder="Kirjoita kommenttisi tähän..."></textarea>
-              </label>
-
-              <button class="save-button" id="save-workout-button" type="button">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h12l2 2v14H5V4Z"></path><path d="M8 4v6h8V4M8 20v-6h8v6"></path></svg>
-                <span>Tallenna treeni</span>
-              </button>
-            </section>
-
             <section class="empty-state" id="today-empty-state">
               <h3>Valmiina aloittamaan</h3>
               <p>Valitse treenipohja ja käynnistä päivän harjoitus. Keskeneräinen treeni säilyy täällä automaattisesti.</p>
             </section>
           </article>
+
+          <section class="template-card active-template-card hidden" id="active-workout-card">
+            <div class="template-card-art active-template-art" id="active-workout-art">
+              <span class="template-orb" id="active-workout-orb" aria-hidden="true"></span>
+              <div class="template-art-copy active-template-copy">
+                <p class="active-template-label" id="active-workout-label">Keskeneräinen treeni</p>
+                <h3 id="active-workout-title">Yläkroppa treeni</h3>
+                <p id="active-workout-started">Aloitettu 18:32</p>
+              </div>
+            </div>
+
+            <div class="template-card-header template-actions-row active-template-actions">
+              <div class="row-actions">
+                <button class="template-action-button danger-action" id="discard-workout-button" type="button" aria-label="Tyhjennä aktiivinen treeni">
+                  <span class="template-action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7l1-3h4l1 3"></path></svg>
+                  </span>
+                  <span>Tyhjennä</span>
+                </button>
+                <button class="template-action-button" id="add-workout-exercise-button" type="button" aria-label="Lisää liike aktiiviseen treeniin">
+                  <span class="template-action-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg>
+                  </span>
+                  <span>Lisää liike</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="active-workout-exercises" class="exercise-list template-exercise-list"></div>
+
+            <label class="field note-field active-template-note">
+              <span>Treenin kommentti</span>
+              <textarea id="workout-note" rows="2" placeholder="Kirjoita kommenttisi tähän..."></textarea>
+            </label>
+
+            <button class="save-button" id="save-workout-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h12l2 2v14H5V4Z"></path><path d="M8 4v6h8V4M8 20v-6h8v6"></path></svg>
+              <span>Tallenna treeni</span>
+            </button>
+          </section>
         </section>
 
         <section class="view" id="view-templates" data-view="templates">

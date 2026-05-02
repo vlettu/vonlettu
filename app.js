@@ -52,6 +52,9 @@ const elements = {
   heroTemplateName: document.getElementById("hero-template-name"),
   startWorkoutButton: document.getElementById("start-workout-button"),
   activeWorkoutCard: document.getElementById("active-workout-card"),
+  activeWorkoutArt: document.getElementById("active-workout-art"),
+  activeWorkoutOrb: document.getElementById("active-workout-orb"),
+  activeWorkoutLabel: document.getElementById("active-workout-label"),
   activeWorkoutTitle: document.getElementById("active-workout-title"),
   activeWorkoutStarted: document.getElementById("active-workout-started"),
   workoutNote: document.getElementById("workout-note"),
@@ -181,16 +184,20 @@ function renderToday() {
     return;
   }
 
-  elements.activeWorkoutTitle.textContent = activeWorkout.editingSavedWorkoutId
-    ? `${activeWorkout.templateName || "Treeni"} - historia`
-    : activeWorkout.templateName || "Mukautettu treeni";
+  const activeTemplateName = activeWorkout.templateName || "Mukautettu treeni";
+  elements.activeWorkoutLabel.textContent = activeWorkout.editingSavedWorkoutId
+    ? "Muokataan historiatreeniä"
+    : "Keskeneräinen treeni";
+  elements.activeWorkoutTitle.textContent = formatTemplateCardTitle(activeTemplateName);
   elements.activeWorkoutStarted.textContent = `Aloitettu ${formatTime(activeWorkout.startedAt || new Date().toISOString())}`;
+  elements.activeWorkoutOrb.innerHTML = iconSvg(templateIconName(activeTemplateName));
+  setWorkoutImageClass(elements.activeWorkoutArt, activeTemplateName);
   elements.workoutNote.value = activeWorkout.note || "";
   elements.activeWorkoutExercises.innerHTML = "";
 
   if (!activeWorkout.exercises.length) {
     elements.activeWorkoutExercises.innerHTML = `
-      <div class="empty-state">
+      <div class="empty-state active-template-empty">
         <h3>Ei vielä liikkeitä</h3>
         <p>Lisää ensimmäinen liike plus-painikkeesta.</p>
       </div>

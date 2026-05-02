@@ -1009,6 +1009,56 @@ button:active,
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.72), 0 8px 22px rgba(226, 178, 99, 0.2);
 }
 
+.active-template-copy {
+  display: grid;
+  gap: 4px;
+}
+
+.active-template-label,
+.active-template-copy p {
+  color: rgba(247, 248, 251, 0.82);
+  font-size: 0.74rem;
+  font-weight: 780;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.active-template-label {
+  color: rgba(241, 209, 139, 0.86);
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.active-template-actions .row-actions {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.active-template-actions .template-action-button {
+  width: 100%;
+  justify-content: center;
+}
+
+.active-template-actions .template-action-button.danger-action .template-action-icon {
+  color: var(--danger-soft);
+}
+
+.active-template-note {
+  margin-top: 0;
+}
+
+.active-template-empty {
+  padding: 14px;
+  border-style: dashed;
+  border-color: rgba(226, 178, 99, 0.24);
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.045), transparent 34%),
+    linear-gradient(180deg, rgba(10, 19, 32, 0.72), rgba(4, 9, 17, 0.78));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.045);
+}
+
 .template-card-header,
 .history-card-header,
 .progress-head {

@@ -356,8 +356,10 @@ function renderTemplates() {
     card.querySelector("[data-start-template]").addEventListener("click", () => {
       elements.todayTemplateSelect.value = template.id;
       renderHeroTemplate();
-      startWorkout(template.id);
-      switchView("today");
+      if (startWorkout(template.id)) {
+        switchView("today");
+        focusActiveWorkoutCard();
+      }
     });
 
     card.querySelector("[data-add-template]").addEventListener("click", () => openExerciseModal(`template:${template.id}`));
@@ -579,17 +581,17 @@ function createChart(entries, label) {
 }
 
 function startWorkoutFromSelectedTemplate() {
-  startWorkout(elements.todayTemplateSelect.value);
+  startWorkout(elements.todayTemplateSelect.value, { focusActiveWorkout: true });
 }
 
-function startWorkout(templateId) {
+function startWorkout(templateId, options = {}) {
   const template = state.templates.find((entry) => entry.id === templateId);
   if (!template) {
-    return;
+    return false;
   }
 
   if (state.activeWorkout && !window.confirm("Korvataanko nykyinen keskeneräinen treeni uudella?")) {
-    return;
+    return false;
   }
 
   state.activeWorkout = {
@@ -606,6 +608,24 @@ function startWorkout(templateId) {
 
   persistState();
   renderToday();
+  if (options.focusActiveWorkout) {
+    focusActiveWorkoutCard();
+  }
+  return true;
+}
+
+function focusActiveWorkoutCard() {
+  if (!state.activeWorkout || !elements.activeWorkoutCard) {
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    elements.activeWorkoutCard.scrollIntoView({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      block: "start"
+    });
+  });
 }
 
 function discardWorkout() {

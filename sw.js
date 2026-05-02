@@ -1,4 +1,4 @@
-const CACHE_NAME = "treeni-seuranta-static-v24";
+const CACHE_NAME = "treeni-seuranta-static-v25";
 const APP_FILES = [
   "./",
   "./index.html",

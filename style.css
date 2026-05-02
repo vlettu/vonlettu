@@ -1134,6 +1134,10 @@ button:active,
   margin-top: 0;
 }
 
+#active-workout-card {
+  scroll-margin-top: calc(var(--safe-top) + 14px);
+}
+
 .active-template-empty {
   padding: 14px;
   border-style: dashed;
@@ -1467,6 +1471,17 @@ button:active,
 
 .modal-actions > * {
   flex: 1;
+}
+
+#exercise-form .modal-actions {
+  position: sticky;
+  bottom: -1px;
+  z-index: 2;
+  padding-top: 10px;
+  border-top: 1px solid rgba(226, 178, 99, 0.14);
+  background:
+    linear-gradient(180deg, rgba(7, 13, 23, 0), rgba(7, 13, 23, 0.96) 28%),
+    linear-gradient(180deg, rgba(8, 15, 26, 0.96), rgba(5, 10, 18, 0.98));
 }
 
 .field-grid {

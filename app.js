@@ -244,6 +244,11 @@ function renderExerciseSummary(exercise) {
 }
 
 function createMetricChips(exercise, chipClass = "tag") {
+  const metricClassByLabel = {
+    sarjaa: "sets",
+    toistoa: "reps",
+    kg: "weight"
+  };
   const metrics = [
     [exercise.sets, "sarjaa"],
     [exercise.reps, "toistoa"],
@@ -252,7 +257,10 @@ function createMetricChips(exercise, chipClass = "tag") {
 
   const visibleMetrics = metrics.length ? metrics : [[exercise.sets, "sarjaa"]];
   return visibleMetrics
-    .map(([value, label]) => `<span class="${chipClass}">${formatMetric(value, label)}</span>`)
+    .map(([value, label]) => {
+      const metricClass = metricClassByLabel[label] || "value";
+      return `<span class="${chipClass} metric-chip metric-chip-${metricClass}">${formatMetric(value, label)}</span>`;
+    })
     .join("");
 }
 
